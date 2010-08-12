@@ -1,3 +1,8 @@
+LuaCue 1.0.1
+============
+
+  * Fixed timestamp-function assuming the wrong time format.
+
 LuaCue 1.0.0
 ============
 

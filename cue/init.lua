@@ -7,10 +7,10 @@ local stringByte = string.byte
 module("cue")
 
 local function timestampToSeconds(s)
-	-- assumes hh:mm:ss
-	local h, m, s = s:match("(%d+):(%d+):(%d+)")
-	local h, m, s = tonumber(h)*3600, tonumber(m)*60, s
-	return h + m + s
+	-- assumes mm:ss:ms
+	local m, s, ms = s:match("(%d+):(%d+):(%d+)")
+	local m, s, ms = tonumber(m)*60, tonumber(s), tonumber(ms)/100
+	return m + s + ms
 end
 
 local o = {tracks={}}
