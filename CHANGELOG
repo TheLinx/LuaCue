@@ -1,3 +1,9 @@
+LuaCue 1.1.0
+============
+
+  * More efficient way of populating the result table, smaller file size.
+  * REM keys are now lower-cased.
+
 LuaCue 1.0.1
 ============
 

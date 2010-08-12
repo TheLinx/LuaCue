@@ -14,60 +14,43 @@ local function timestampToSeconds(s)
 end
 
 local o = {tracks={}}
-local track = 0
+local current = o
 
-local handlers =
-{
+local handlers = setmetatable({
 	REM = function(o, k, v)
-		if track > 0 then
-			o.tracks[track][k] = v
-		else
-			o[k] = v
-		end
+		current[k:lower()] = v
 	end,
 	TITLE = function(o, s)
-		if track > 0 then
-			o.tracks[track].title = s
-		else
-			o.title = s
-		end
+		current.title = s
 	end,
 	PERFORMER = function(o, s)
-		if track > 0 then
-			o.tracks[track].performer = s
-		else
-			o.performer = s
-		end
+		current.performer = s
 	end,
 	FILE = function(o, s1, s2)
-		o.filename = s1
-		o.filetype = s2
+		current.filename = s1
+		current.filetype = s2
 	end,
 	TRACK = function(o, n, s)
-		track = tonumber(n)
-		o.tracks[track] = {
+		local n = tonumber(n)
+		o.tracks[n] = {
 			type = s,
 			indices = {}
 		}
+		current = o.tracks[n]
 	end,
 	ISRC = function(o, s)
-		o.tracks[track].isrc = s
+		current.isrc = s
 	end,
 	CATALOG = function(o, s)
-		o.catalog = s
+		current.catalog = s
 	end,
 	SONGWRITER = function(o, s)
-		if track > 0 then
-			o.tracks[track].songwriter = s
-		else
-			o.songwriter = s
-		end
+		current.songwriter = s
 	end,
 	INDEX = function(o, n, s)
-		o.tracks[track].indices[n] = timestampToSeconds(s)
+		current.indices[n] = timestampToSeconds(s)
 	end
-}
-setmetatable(handlers, {
+}, {
 	__index = function(t, k)
 		error("no handler for value "..k)
 	end

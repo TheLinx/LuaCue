@@ -12,7 +12,7 @@ It should be automatically installed if you install LuaCue with LuaRocks.
 
 h2. How to install (with LuaRocks)
 
-Run the command _luarocks install http://github.com/TheLinx/LuaCue/raw/rocks/cue-1.0.1-1.rockspec_
+Run the command _luarocks install http://github.com/TheLinx/LuaCue/raw/rocks/cue-1.1.0-1.rockspec_
 
 h2. How to install (Manually)
 
