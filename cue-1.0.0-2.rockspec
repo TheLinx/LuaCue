@@ -1,5 +1,5 @@
 package = "cue"
-version = "1.0.0-1"
+version = "1.0.0-2"
 description = {
     summary = "A cuesheet parser for Lua.",
     detailed = [[
@@ -11,6 +11,7 @@ description = {
 }
 dependencies = {
     "lua >= 5.1",
+    "cl >= 20100607",
 }
 source = {
     url = "git://github.com/TheLinx/LuaCue.git",
