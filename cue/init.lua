@@ -18,7 +18,7 @@ local current = o
 
 local handlers = setmetatable({
 	REM = function(o, k, v)
-		current[k:lower()] = v
+		current.remarks[k:lower()] = v
 	end,
 	TITLE = function(o, s)
 		current.title = s
